@@ -1,0 +1,87 @@
+use('vendor.js')
+@import 'vendor'
+
+background-size()
+  vendor('background-size', arguments, only: webkit moz official)
+
+transform()
+  vendor('transform', arguments)
+  
+box-shadow()
+  vendor('box-shadow', arguments)
+
+transition()
+  vendor('transition', arguments)
+
+box-sizing()
+  vendor('box-sizing', arguments, only: webkit moz official)
+
+animation()
+  vendor('animation', arguments)
+
+border-radius()
+  pos = ()
+  augmented = false
+  importance = arguments[length(arguments) - 1] == !important ? !important : unquote('')
+
+  for args in arguments
+    for arg in args
+      if arg is a 'ident'
+        append(pos, arg)
+        augmented = true
+      else
+        append(pos, arg)
+        if augmented
+          -apply-border-radius(pos, importance)
+          pos = ()
+  vendor('border-radius', pos, only: webkit official) unless augmented
+
+placeholder()
+  for v in ':-webkit-input' '-moz' ':-moz' '-ms-input'
+    &:{v}-placeholder
+      for pair in arguments
+        if typeof(pair) == 'function'
+          pair()
+        else if pair is not null && pair[0] is not null
+          {pair[0]}: type(pair[1]) == 'string' ? s(pair[1]) : pair[1]
+input-placeholder = placeholder
+
+-pos(type, args)
+  i = 0
+  position: unquote(type)
+  for j in (1..4)
+    if length(args) > i
+      {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+    i += 1
+
+fixed()
+  -pos('fixed', arguments)
+
+absolute()
+  -pos('absolute', arguments)
+
+relative()
+  -pos('relative', arguments)
+
+size()
+  if length(arguments) == 1
+    width: arguments[0]
+    height: arguments[0]
+  else
+    width: arguments[0]
+    height: arguments[1]
+
+column-count()
+  vendor('column-count', arguments)
+  
+column-gap()
+  vendor('column-gap', arguments)
+
+clearfix()
+  zoom 1
+  &:after
+  &:before
+    content ""
+    display table
+  &:after
+    clear both  

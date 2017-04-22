@@ -1,0 +1,456 @@
+/* VARIABLES
+================================================== */
+$color-1 = #44620D
+$color-2 = #F6A300
+$color-3 = #C26A0B
+$color-text = #565555
+
+$main-font = @block {
+  font-family 'Roboto Slab', serif
+}
+
+$secondary-font = @block {
+  font-family 'KingsofKingsLynn', serif
+}
+
+
+/* GLOBAL
+================================================== */
+html, body
+  height 100%
+
+body
+  {$main-font}
+  font-size 16px
+  font-weight 400
+  color $color-text
+  background-color #EEE
+
+a
+  color $color-2
+
+  &:hover, &:focus
+    color darken($color-2, 10%)
+
+.text-white
+  color white
+
+a.text-white
+  &:hover, &:focus
+    color $color-2
+
+.btn
+  border-radius 0
+  line-height 1em
+
+.btn-default
+  background-color #d4d4d4
+  border-color #d4d4d4
+
+  &:hover, &:focus
+    border-color #e6e6e6
+
+.btn-primary
+  background-color $color-1
+  border-color $color-1
+  font-size 1.5em
+  font-weight 600
+  text-transform uppercase
+  padding 0.5em 2em 0.65em
+
+  &:hover, &:focus
+    background-color darken($color-1, 10%)
+    border-color darken($color-1, 10%)
+
+.carousel-fade
+  .carousel-inner
+    .item
+      transition-property opacity
+
+    .item,
+    .active.left,
+    .active.right
+      opacity 0
+
+    .active,
+    .next.left,
+    .prev.right
+      opacity 1
+
+    .next,
+    .prev,
+    .active.left,
+    .active.right
+      left 0
+      transform translate3d(0, 0, 0)
+
+  .carousel-control
+    z-index 2
+
+
+/* ELEMENTS
+================================================== */
+.section
+  position relative
+  padding 30px 0
+  background-repeat no-repeat
+  background-position center
+  background-size cover
+
+  &.section-large
+    padding 50px 0
+
+  &.section-fullwidth
+    padding 0
+
+  .row
+    padding-top 20px
+    padding-bottom 20px
+
+    .row-inner
+      padding-top 0
+      padding-bottom 0
+
+.section-bg-gray
+  background-color #ececec
+
+.section-title
+  {$secondary-font}
+  color #333
+
+  //.title
+  //  font-size 3.125em
+  //  font-weight 700
+  //  text-transform uppercase
+  //  color $color-4
+  //  margin-top 0
+  //
+  //.subtitle
+  //  font-size 1.8em
+  //  font-weight 300
+  //  line-height 1.3em
+  //
+  //.pretitle
+  //  font-size 20px
+  //  font-weight 300
+  //  text-transform uppercase
+
+  &.text-light
+    .title, .subtitle
+      color white
+
+hr.spacer
+  border 0
+  margin 0
+  height 1px
+
+.panel-widget
+  position relative
+  background-color transparent
+  background-size cover
+  background-position center
+  background-repeat no-repeat
+  border 0
+  border-radius 0
+  box-shadow none
+  margin-bottom 0
+  padding 20px 15px 15px
+  height 480px
+
+  &:before
+    content ""
+    absolute top 20px bottom 15px left 15px right 15px
+    background-color white
+    border-radius 4px
+
+  &.size-2
+    background-image url("../images/bg-widget-2.png")
+
+  &.size-3
+    background-image url("../images/bg-widget-3.png")
+
+  .panel-body
+    position relative
+
+  &.no-padding .panel-body
+    padding 0
+
+
+.list-events
+  margin-bottom 0
+
+  .media + .media
+    margin-top 10px
+
+  .media a
+    color $color-text
+
+  .media-left a
+    text-decoration none
+
+  .media-object
+    text-align center
+    background-color #EEE
+    width 75px
+    padding 8px 5px
+
+    span
+      display block
+      line-height 1em
+
+    .day, .month
+      text-transform uppercase
+      font-weight 700
+
+    .day
+      font-size 11px
+
+    .month
+      font-size 15px
+
+    .date
+      font-weight 900
+      font-size 35px
+      line-height 0.95em
+
+  .media-heading
+    font-size 1em
+    font-weight bold
+
+  .media-body p
+    font-size 0.9em
+    margin-bottom 0
+
+
+
+/* HEADER
+================================================== */
+#main-nav
+  margin-bottom 0
+
+  .navbar-header
+    float none
+
+  .navbar-brand
+    height auto
+    float none
+    display inline-block
+    padding-top 50px
+    padding-bottom 20px
+
+  .navbar-menu
+    float none
+    background-image url("../images/bg-menu.png")
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    height 70px
+    padding 14px
+
+
+    li a
+      {$secondary-font}
+      font-size 26px
+      text-transform uppercase
+      color white
+      background none
+
+    li a:hover, li a:focus, li.active a, li.current_page_parent a
+      color $color-2
+
+  .navbar-collapse
+    position relative
+
+#sign-status
+  absolute top -85px right 40px
+  size 129px 91px
+  background url("../images/status-sign.png") left top no-repeat
+  text-decoration none !important
+  user-select none
+
+  &:after
+    content ""
+    absolute top -50px right -30px
+    size 101px 65px
+    background url("../images/bird.png") left top no-repeat
+    opacity 0
+
+  span
+    display block
+    {$secondary-font}
+    color $color-3
+    text-align center
+    font-size 32px
+    line-height 66px
+    transform rotate(-7deg) translate(5px,0px)
+
+  &.open
+    &:after
+      opacity 1
+
+    span
+      font-size 36px
+      color #597F10
+      transition color .2s linear
+
+    &:hover span, &:focus span
+      color lighten(#597F10, 15%)
+
+
+  //.navbar-collapse
+  //  position relative
+
+// .navbar-nav
+//     margin-top 10px
+
+
+
+/* BODY
+================================================== */
+//.grecaptcha-badge
+//  background white
+//  z-index 100
+
+
+
+/* FOOTER
+================================================== */
+//#main-footer
+//  border-top 3px solid $color-3
+//  background $color-1
+//  color white
+//  font-weight 300
+//
+//#footer-widgets
+//  background url('../images/pattern.png') left top repeat
+//  padding 60px 0
+//  font-size 20px
+//
+//  .menu
+//    list-style none
+//    padding 0
+//
+//  .separator
+//    display block
+//    size 3px 280px
+//    margin -20px auto
+//    background white
+//
+//.footer-widget
+//  .title
+//    font-weight 600
+//    padding-bottom 12px
+//    border-bottom 2px solid $color-3
+//    margin 0 0 25px
+//
+//  a
+//    color white
+//
+//#footer-widget-3 ul
+//  li
+//    display inline-block
+//    margin 0 10px 0 0
+//
+//  a
+//    display block
+//    font-size 30px
+//    size 65px
+//    line-height 61px
+//    text-align center
+//    border 2px solid
+//    border-radius 50%
+//    color white
+//
+//    &:hover, &:focus
+//      color $color-2
+//
+//#footer-widget-4
+//  .title
+//    font-size 1.8em
+//    text-transform uppercase
+//    margin-top -13px
+//    margin-left 75px
+//
+//    &:before
+//      content "\e903"
+//      font-family 'icomoon'
+//      float left
+//      font-size 44px
+//      color $color-1
+//      background white
+//      size 64px
+//      margin-left -75px
+//      margin-top 5px
+//      border-radius 50%
+//      line-height 66px
+//      text-align center
+//
+//  .textwidget
+//    text-align center
+//
+//  .lead
+//    font-weight bold
+//    font-size 1.7em
+//    line-height 1.2em
+//    margin-bottom 0
+//
+// #footer-bottom
+//   padding 50px 0
+
+
+/* EFFECTS
+================================================== */
+#clouds
+  absolute top 0 left 0
+  width 100%
+  height 100vh
+  overflow-x hidden
+  background -webkit-linear-gradient(top, #BBB 0%, #EEE 500px)
+  background -moz-linear-gradient(top, #BBB 0%, #EEE 500px)
+  background linear-gradient(top, #BBB 0%, #EEE 500px)
+  z-index -1
+
+  .sun
+    size 154px 152px
+    background url("../images/sun.png") center no-repeat
+    left 50% !important
+    margin-left -77px
+    margin-top -40px
+
+  .cloud
+    size 208px 62px
+    background url("../images/cloud.png") center no-repeat
+
+  .inv
+    background-image url("../images/cloud-inv.png")
+
+  .x1
+    margin-left 4%
+    margin-top 6%
+
+  .x2
+    margin-left 25%
+    margin-top 30px
+    background-size 90%
+    opacity 0.9
+
+  .x3
+    margin-left 10%
+    margin-top 20%
+    background-size 80%
+    opacity 0.8
+
+  .x4
+    left initial !important
+    right 0
+    margin-right 4%
+    margin-top 8%
+    background-size 75%
+    opacity 0.75
+
+  .x5
+    left initial !important
+    right 0
+    margin-right 25%
+    margin-top 60px
+    opacity 0.8

@@ -1,0 +1,45 @@
+// home.styl
+
+.section-home-first
+  padding-top 0
+
+#carousel-highlights
+  .owl-stage-outer
+    border-radius 4px
+
+  .item
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    height 445px
+
+  .owl-nav
+    margin 0
+    absolute top 50% left 0
+    width 100%
+
+  .owl-prev, .owl-next
+    position absolute
+    top 0
+    display inline-block
+    background none
+    margin 0
+    padding 0
+    size 50px 42px
+
+  .owl-prev
+    left 0
+
+    &:before, &:after
+      content ''
+      width 50px
+      height 3px
+      background white
+
+    &:before
+      absolute top 0 left 0
+      transform rotate(125deg)
+
+    &:after
+      absolute bottom 0 left 0
+      transform rotate(-125deg)
